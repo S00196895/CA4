@@ -1,0 +1,27 @@
+<button class="btn btn-primary" (click)="show = !show" id="push-down">{{show ? 'Hide' : 'Add a Car'}}</button>
+
+<div *ngIf="show" id="add-car">
+    <form>
+        <label id="space">Make</label>
+        <input type="text" name="make" id="space" placeholder="Enter Make" #make>
+
+        <label id="space">Model</label>
+        <input type="text" name="model" id="space" placeholder="Enter Model" #model>
+        
+        <label id="space">Year</label>
+        <input type="text" name="year" id="space" placeholder="Enter Year" #year>
+
+        <label id="space">Image</label>
+        <input type="text" name="image" id="space" placeholder="Enter Link To Image" #imageUrl>
+
+        
+        <input type="hidden" name="id" placeholder="Enter the car's id" #id>
+        
+        <button type="submit" class="btn btn-success" (click)="addTheCar(make.value,
+        model.value,year.value,imageUrl.value,id.value)">Add the Car</button>
+    </form>
+</div>
+
+<div class='container'>
+    <app-car *ngFor="let carData of carsData" [carData]="carData"></app-car>
+</div>
